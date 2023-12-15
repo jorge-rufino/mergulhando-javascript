@@ -1,14 +1,23 @@
-class Human {
+class Animal{
+	sex;
+
+	constructor(props){
+		this.sex = props.sex;
+	}
+}
+
+class Human extends Animal{
 	hungry = true;
 	name;
 	age;
-	sex;
 
 	//Construtor é executado na criação do objeto. Ele é opicional dentro da classe
 	constructor(props){
+		
+		super(props.sex);
+
 		this.name = props.name;
-		this.age = props.age;
-		this.sex = props.sex;
+		this.age = props.age;		
 		console.log('Objeto criado');
 	}
 
