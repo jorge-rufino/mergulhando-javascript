@@ -1,39 +1,37 @@
-const name = 'Jorge';
-const age = 37;
+class Human {
+	hungry = true;
+	name;
+	age;
+	sex;
 
-//Padrão
-const sentence = 'Olá, meu nome é ' + name + ' e eu tenho ' + age + ' anos.';
+	//Construtor é executado na criação do objeto. Ele é opicional dentro da classe
+	constructor(props){
+		this.name = props.name;
+		this.age = props.age;
+		this.sex = props.sex;
+		console.log('Objeto criado');
+	}
 
-//Template String. Usamos a crase em vez de aspas duplas ou simples
-const sentence2 = `Olá, meu nome é ${name} e eu tenho ${age} anos.`;
+	//Metodo
+	eat() {
+		this.hungry = false;
+	}
+}
 
-//Padrao. Nestes casos precisamos usar a barra invertida e mesmo assim não mantem a quebra de linha e identação
-const html = '\
-	<ul>\
-		<li>\
-			${name}\
-		</li>\
-		<li>\
-			${age}\
-		</li>\
-	</ul>\
-';
+const person = new Human({
+	name: 'Jorge',
+	age: 37,
+	sex: 'Masculino'
+});
 
-//Template String. Mantem a quebra de linha e identação
-const html2 = `
-	<ul>
-		<li>
-			${name}
-		</li>
-		<li>
-			${age}
-		</li>
-	</ul>
-`;
+const person2 = new Human({
+	name: 'Nick',
+	age: 4,
+	sex: 'Masculino'
+});
 
+person.eat();
+person2.age = 17;
 
-console.log(sentence);
-console.log(sentence2);
-
-console.log('\n'+html);
-console.log(html2);
+console.log(person);
+console.log(person2);
