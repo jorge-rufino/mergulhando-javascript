@@ -1,46 +1,23 @@
-class Animal{
-	sex;
-
-	constructor(props){
-		this.sex = props.sex;
-	}
-}
-
-class Human extends Animal{
-	hungry = true;
-	name;
-	age;
-
-	//Construtor é executado na criação do objeto. Ele é opicional dentro da classe
-	constructor(props){
-		
-		super(props.sex);
-
-		this.name = props.name;
-		this.age = props.age;		
-		console.log('Objeto criado');
-	}
-
-	//Metodo
-	eat() {
-		this.hungry = false;
-	}
-}
-
-const person = new Human({
+const person = {
 	name: 'Jorge',
-	age: 37,
-	sex: 'Masculino'
-});
+	age: 37
+};
 
-const person2 = new Human({
-	name: 'Nick',
-	age: 4,
-	sex: 'Masculino'
-});
+//Colocando os atributos entre chaves, se passarmos um Objeto com os mesmos atributos, o JS consegue fazer a relação
+function introduce ({name, age}){
+	console.log(`Olá, meu nome é ${name}, e eu tenho ${age} anos`);
+}
 
-person.eat();
-person2.age = 17;
+introduce(person);
 
-console.log(person);
-console.log(person2);
+const fruits = ['banana','morango','laranja'];
+
+//const firstFruit = fruits[0];
+//const secondFruit = fruits[1];
+
+//Podemos fazer deste jeito agora
+const [firstFruit, secondFruit, terceira] = fruits;
+
+console.log(firstFruit);
+console.log(secondFruit);
+console.log(terceira);
