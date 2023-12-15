@@ -1,23 +1,24 @@
 const person = {
-	name: 'Jorge',
-	age: 37
+	name: 'Italo',
+	age: 14,
+	contact: {
+		foo: {
+			bar: {
+				email: 'daniel.bonifacio@algaworks.com'
+			}
+		}
+	}
 };
 
-//Colocando os atributos entre chaves, se passarmos um Objeto com os mesmos atributos, o JS consegue fazer a relação
-function introduce ({name, age}){
-	console.log(`Olá, meu nome é ${name}, e eu tenho ${age} anos`);
-}
+//Colocando o nome da variavel entre parenteses, o JS faz a relacao entre elas e o Objeto criando variaveis com o mesmo no 
+//dos atributos do Objeto
+const {name, age, contact: {foo: {bar: { email } }}} = person;
 
-introduce(person);
+//Pegamos o "name" mas para criar uma variavel com nome diferente, utilizamos o ":" seguido do nome que queremos
+const {name: nome} = person;
 
-const fruits = ['banana','morango','laranja'];
+console.log(name);
+console.log(age);
+console.log(email);
 
-//const firstFruit = fruits[0];
-//const secondFruit = fruits[1];
-
-//Podemos fazer deste jeito agora
-const [firstFruit, secondFruit, terceira] = fruits;
-
-console.log(firstFruit);
-console.log(secondFruit);
-console.log(terceira);
+console.log(nome);
