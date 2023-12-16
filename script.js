@@ -1,24 +1,27 @@
-const person = {
-	name: 'Italo',
-	age: 14,
-	contact: {
-		foo: {
-			bar: {
-				email: 'daniel.bonifacio@algaworks.com'
-			}
-		}
-	}
-};
+const fruits = ['banana','morango','laranja','abacaxi'];
 
-//Colocando o nome da variavel entre parenteses, o JS faz a relacao entre elas e o Objeto criando variaveis com o mesmo no 
-//dos atributos do Objeto
-const {name, age, contact: {foo: {bar: { email } }}} = person;
+//usamos a "," para ir pulando os indices do array
+const [ , ,thirdItem] = fruits;
 
-//Pegamos o "name" mas para criar uma variavel com nome diferente, utilizamos o ":" seguido do nome que queremos
-const {name: nome} = person;
+//Laranja
+console.log(thirdItem);
 
-console.log(name);
-console.log(age);
-console.log(email);
+const person = { name:'Jorge', age: 37 };
+const person2 = { name:'Nick', age: 4 };
+const person3 = { name:'Lari', age: 30 };
 
-console.log(nome);
+const friends = [person,person2,person3];
+
+//Desestrurando Array e Objeto. Pegamos o "name" do "person2" e criamos a variavel "namePerson2" com o valor de "name"
+const [ , { name: namePerson2 }] = friends;
+
+//Nick
+console.log(namePerson2);
+
+const chart = [[2,6] , [4,8] , [1,5]];
+
+//Acessa do terceiro elemento "[1,5]", o valor do segundo elemento "5", e jogo na variavel "y"
+const [ , , [ , y]] = chart;
+
+//5
+console.log(y);
