@@ -1,27 +1,35 @@
-const fruits = ['banana','morango','laranja','abacaxi'];
+const parts = ['ombro', 'joelho'];
 
-//usamos a "," para ir pulando os indices do array
-const [ , ,thirdItem] = fruits;
+//Desse jeito, sempre que fosse adicionado um valor no array acima, teriamos que adicionar no array abaixo
+//const sentence = ['cabeça', parts[0],parts[1], 'pés'];
 
-//Laranja
-console.log(thirdItem);
+//Desta forma fica dinâmico
+const sentence = ['cabeça', ...parts, 'pés'];
+console.log(sentence);
 
-const person = { name:'Jorge', age: 37 };
-const person2 = { name:'Nick', age: 4 };
-const person3 = { name:'Lari', age: 30 };
+/*
+function createUser(name, age, contact1, contact2, contact3) {
+	return {
+		name,
+		age,
+		contacts: [contact1,contact2,contact3]
+	};
+}
+*/
+function createUser(name, age, ...contacts) {
+	return {
+		name,
+		age,
+		contacts
+	};
+}
 
-const friends = [person,person2,person3];
+console.log(createUser('Jorge',37,'email1','email2'));
 
-//Desestrurando Array e Objeto. Pegamos o "name" do "person2" e criamos a variavel "namePerson2" com o valor de "name"
-const [ , { name: namePerson2 }] = friends;
+const immutableArray = ['select', '*', 'from', 'posts'];
 
-//Nick
-console.log(namePerson2);
+//Desta forma estamos apenas criando uma referencia ao objeto "immutableArray", então qualquer alteraçao em "mutableArray" irá para "immutableArray"
+//const mutableArray = immutableArray;
 
-const chart = [[2,6] , [4,8] , [1,5]];
-
-//Acessa do terceiro elemento "[1,5]", o valor do segundo elemento "5", e jogo na variavel "y"
-const [ , , [ , y]] = chart;
-
-//5
-console.log(y);
+const mutableArray = [...immutableArray];
+mutableArray.push('where id = 1');
