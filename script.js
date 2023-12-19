@@ -1,12 +1,11 @@
-function greet () {
-	//Lembrando, "arguments" é uma LISTA especial (não é um ARRAY), portanto não podemos usar o "foreach", por isso criamos o Array "args" com base em "arguments"
-	const args = Array.from(arguments, function (nome) {
-		return  '!' + nome + '!';
-	});
-	
-	args.forEach(argument => {
-		console.log(`Hello, ${argument}`);
+const fruits = ['banana','morango','cacau'];
+
+function eatAllFruits(){
+	//Fruta é cada elemento da lista e "index" é o indice do elemento dentro da lista
+	fruits.forEach( (fruta, index) => {
+		console.log(`hummm, acabei de comer ${fruta}`);
+		console.log(`Ele era o ${index + 1 } da minha lista`);
 	});
 }
 
-greet('Jorge','Nick','Lari');
+eatAllFruits();
