@@ -1,17 +1,14 @@
-const fruits = ['banana', 'morango', 'manga'];
+const students = [
+	{ name: 'Lucas',    grade: 8 },
+	{ name: 'Mario',    grade: 2 },
+	{ name: 'Jean',     grade: 10 },
+	{ name: 'Rogerio',  grade: 6 },
+	{ name: 'Marcos',   grade: 5 },
+];
 
-//O "map" é semelhante ao "foreach" porém ele retornar um valor a cada iteração enquanto o foreach não.
-var capitalizedFruits = fruits.map(fruit => {
-	return fruit.toUpperCase();
+//Retorna uma array com os elementos baseados na condição do "return"
+const failedStudents = students.filter( student => {
+	return student.grade < 7;
 });
 
-console.log(capitalizedFruits);
-console.log(fruits);
-
-capitalizedFruits = fruits.forEach(fruit => {
-	return fruit.toUpperCase();
-});
-
-//Percebea que o valor da váriavel é "undefined"
-console.log(capitalizedFruits);
-console.log(fruits);
+console.log(failedStudents);
