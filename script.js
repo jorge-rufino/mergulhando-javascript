@@ -1,11 +1,17 @@
-const fruits = ['banana','morango','cacau'];
+const fruits = ['banana', 'morango', 'manga'];
 
-function eatAllFruits(){
-	//Fruta é cada elemento da lista e "index" é o indice do elemento dentro da lista
-	fruits.forEach( (fruta, index) => {
-		console.log(`hummm, acabei de comer ${fruta}`);
-		console.log(`Ele era o ${index + 1 } da minha lista`);
-	});
-}
+//O "map" é semelhante ao "foreach" porém ele retornar um valor a cada iteração enquanto o foreach não.
+var capitalizedFruits = fruits.map(fruit => {
+	return fruit.toUpperCase();
+});
 
-eatAllFruits();
+console.log(capitalizedFruits);
+console.log(fruits);
+
+capitalizedFruits = fruits.forEach(fruit => {
+	return fruit.toUpperCase();
+});
+
+//Percebea que o valor da váriavel é "undefined"
+console.log(capitalizedFruits);
+console.log(fruits);
