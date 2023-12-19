@@ -1,23 +1,24 @@
-const students = [
-	{ name: 'Lucas',    grade: 8 },
-	{ name: 'Mario',    grade: 2 },
-	{ name: 'Jean',     grade: 10 },
-	{ name: 'Rogerio',  grade: 6 },
-	{ name: 'Marcos',   grade: 5 },
-	{ name: 'Jean',   grade: 9 },
-];
 
-//Diferença para o "filter", é que o "find" retorna somente um objeto enquanto o "filter" retorna um array de objetos.
-//"Find" funciona como um "findFirst" pois em caso de valores repetidos, assim que ele encontra o primeiro, ele para de iterar.
-const findStudent = students.find( student => {
+//"resolve" é um método que deve ser usado quando a promise for resolvida
+//"reject" é um método que deve ser usando quando a promisse for rejeitada
+function handleClick () {
+	return new Promise ((resolve, reject) => {
+		setTimeout(() => {
+			//resolve(123);
+			reject('Erro inesperado');
+		}, 5000);
+	});
+}
 
-	/*		***Pode ser desta forma tb***
-	if(student.name === 'Jean'){
-		return true;
-	}	*/
-
-	return student.name === 'Jean';
-});
-
-//Retorna o objeto
-console.log(findStudent);
+//"then" é um método que só será executado caso a promisse seja resolvida
+//"catch" é um método que só será executado caso a promisse seja rejeitada
+const result = handleClick()
+	.then(res => {
+		console.log(123 === res);
+		console.log('finalizou');
+		return 'batata';
+	})
+	.catch(err => {
+		console.log('houve um erro');
+		console.log(err);
+	});
