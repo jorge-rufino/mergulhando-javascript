@@ -1,21 +1,22 @@
-const baseUrl = 'https://jsonplaceholder.typicode.com';
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+	.then(res => {
+		const data = res.json();			//Transforma a resposta da API em Json
+		console.log('Os dados não aparecem, por que?' + data);	//Porque ".json()" tb é uma "promise"
+	});
 
-//Executa todos em paralelo e na sequencia, se usassemos o "await", cada promise ficaria esperando finalizar uma para entrar em execuçao
-async function getTodos () {
-	const promises = Promise.all([
-		fetch(`${baseUrl}/todos/1`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/2`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/3`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/4`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/5`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/6`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/7`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/8`).then(res => res.json()),
-		fetch(`${baseUrl}/todos/9`).then(res => res.json()),
-	]);
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+	.then( async (res) => {							//Transformando a promise em "async" 
+		const data = await res.json();		//Esperando executar a promise de transformar em json		
+		console.log(data);								//Agora a resposta json é exibida
+	});	
 
-	return promises;
-}
-
-
-const todos = getTodos();
+//Promise chaining. Usamos 2 "then()", o primeiro executa a promise de transformar em json
+//O segundo captura a resposta json, podendo trabalhar os dados
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+	.then(res => res.json())
+	.then(data => {
+		console.log('userId:'+data.userId);
+		console.log('id:'+data.id);
+		console.log('title:'+data.title);
+		console.log('completed:'+data.completed);
+	});
